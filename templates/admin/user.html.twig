@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}utilisateur{% endblock %}
+
+{% block body %}
+    <h1>listes des utilisateurs</h1>
+    <table class="table">
+    <thead>
+        <th>ID</th>
+        <th>email</th>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>genre</th>
+        {# <th>dateNaissance</th> #}
+        <th>password</th>
+        <th>rôles</th>
+        <th>action</th>
+    </thead>
+    <tbody>
+      {# on boucle sur les utilisateurs #}
+       {% for user in users %}
+       <tr>
+       <td>{{user.id}}</td>
+       <td>{{user.email}}</td>
+       <td>{{user.nom}}</td>
+       <td>{{user.prenom}}</td>
+       <td>{{user.genre}}</td>
+        {# <td>{{user.dateNaissance}}</td> #}
+        <td>{{user.password}}</td>
+        <td>
+        {% for role in user.roles %}
+        {% if role == "ROLE_USER" %}
+             utilisateur
+        {% elseif role == "ROLE_ADMIN" %}  
+            administrateur
+        {% elseif role == "ROLE_PATIENT" %}  
+            patient
+        {% elseif role == "ROLE_DOCTEUR" %}  
+            docteur
+
+        {% endif %}
+
+        {% endfor %}
+        </td>
+        <td><a href="/edituser" class="btn btn-warning">modifier</a></td>
+       
+       </tr>
+
+       {% else %}
+           <tr>
+           <td colspan=8>il n'a pas d'utilisateurs inscrit</td>
+           </tr>
+       {% endfor %}
+    
+    </tbody>
+        
+
+    </table>
+
+    
+{% endblock %}
