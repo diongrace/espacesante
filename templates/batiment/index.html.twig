@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Batiment index{% endblock %}
+
+{% block body %}
+    <h1>Batiment hospitalier</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Numero</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for batiment in batiments %}
+            <tr>
+                <td>{{ batiment.id }}</td>
+                <td>{{ 'BATIMENT' ~ " " ~ batiment.Libelle ('upper') }}</td>
+                <td>{{ batiment.numero }}</td>
+                <td>
+                    <a class="btn  btn-info mt-b" href="{{ path('app_batiment_show', {'id': batiment.id}) }}">show</a>
+                    <a class="btn  btn-primary mt-b" href="{{ path('app_batiment_edit', {'id': batiment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary mt-b" href="{{ path('app_batiment_new') }}">Create new</a>
+{% endblock %}

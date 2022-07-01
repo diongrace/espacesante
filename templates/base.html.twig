@@ -15,9 +15,10 @@
         {% endblock %}
     </head>
     <body>
+     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,24 +26,40 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home
+          <a class="nav-link active" href="/home">Acceuil
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#"></a>
         </li>
         {% if is_granted('ROLE_ADMIN') %}
         <li class="nav-item">
-          <a class="nav-link" href="/admin">admin</a>
+          <a class="nav-link" href="/admin">Admin</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="/inscription/new">inscription</a>
+          <a class="nav-link" href="/inscription">Utilisateur</a>
         </li>
-          <li class="nav-item">
-          <a class="nav-link" href="/utilisateurs">utilisateurs</a>
+         <li class="nav-item">
+          <a class="nav-link" href="/user">Compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/hospitalisation">Hospitalisation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/historique/hospitalisation">Historique</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/chambre">GestionChambre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/batiment">Batiment</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/lits">GestionLits</a>
         </li>
         {% endif %}
+        
       </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="Search">
@@ -52,7 +69,9 @@
   </div>
 </nav>
 <div class="container">
+
         {% block body %}{% endblock %}
-    </div>
+
+    </div> 
     </body>
-</html>
+</html> 

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\User1Type;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +20,14 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
+        $tableuRoles = [
+            'ROLE_ADMIN' => 'Administarteur',
+            'ROLE_USER' => 'Utilisateur',
+
+        ];
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'roles' => $tableuRoles,
         ]);
     }
 
@@ -31,7 +37,7 @@ class UserController extends AbstractController
     public function new(Request $request, UserRepository $userRepository): Response
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -46,7 +52,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_user_show", methods={"GET"})
+     * @Route("/{id}/show", name="app_user_show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -60,7 +66,7 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

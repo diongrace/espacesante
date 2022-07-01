@@ -54,10 +54,9 @@ class RegistrationFormType extends AbstractType
                 'label' => 'genre'
             ])
             ->add('dateNaissance', DateType::class, [
-                'attr' => [
-                    'class' => 'form-control'
+                'placeholder' => [
+                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
                 ],
-                'label' => 'dataNaissance'
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

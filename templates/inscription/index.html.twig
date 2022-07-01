@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription index{% endblock %}
+{% block title %}liste des patients{% endblock %}
 
 {% block body %}
     
  {% if is_granted('ROLE_ADMIN') %}
- <h1>Inscription index</h1>
+ <h1>liste des utilisateurs</h1>
     <table class="table">
         <thead>
             <tr>
@@ -38,8 +38,8 @@
                 <td>{{ inscription.dateNaissance ? inscription.dateNaissance|date('Y-m-d') : '' }}</td>
                 <td>{{ inscription.numeroCNI }}</td>
                 <td>
-                    <a href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
-                    <a href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
+                    <a class="btn btn-info mt-b" href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
+                    <a class="btn btn-primary mt-b" href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -49,7 +49,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('app_inscription_new') }}">Create new</a>
+    <a class="btn btn-primary mt-b" href="{{ path('app_inscription_new') }}">Create new</a>
 {% endif %}
 
 {% endblock %}

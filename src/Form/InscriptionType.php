@@ -89,11 +89,15 @@ class InscriptionType extends AbstractType
                 'label' => 'pays'
             ])
             ->add('dateNaissance', DateType::class, [
+                'placeholder' => [
+                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+                ],
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'dateNaissance'
+                'label' => 'dateNaissance' 
             ])
+
             ->add('numeroCNI', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'

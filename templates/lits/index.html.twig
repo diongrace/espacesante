@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lits index{% endblock %}
+
+{% block body %}
+    <h1>Lits hospitalier</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lit in lits %}
+            <tr>
+                <td>{{ lit.id }}</td>
+                <td>{{ lit.numero }}</td>
+                <td>{{ lit.statut ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a class="btn  btn-info mt-b" href="{{ path('app_lits_show', {'id': lit.id}) }}">show</a>
+                    <a class="btn btn-primary mt-b" href="{{ path('app_lits_edit', {'id': lit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary mt-b" href="{{ path('app_lits_new') }}">Create new</a>
+{% endblock %}

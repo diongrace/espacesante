@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lits{% endblock %}
+
+{% block body %}
+    <h1>Lits</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lit.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ lit.numero }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ lit.statut ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_lits_index') }}">back to list</a>
+
+    <a href="{{ path('app_lits_edit', {'id': lit.id}) }}">edit</a>
+
+    {{ include('lits/_delete_form.html.twig') }}
+{% endblock %}
