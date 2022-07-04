@@ -7,7 +7,7 @@
 
     {{ include('chambre/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_chambre_index') }}">back to list</a>
+    <a class="btn btn-secondary mt-4" href="{{ path('app_chambre_index') }}">back to list</a>
 
     {{ include('chambre/_delete_form.html.twig') }}
 {% endblock %}

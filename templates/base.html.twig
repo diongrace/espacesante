@@ -26,10 +26,27 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/home">Acceuil
+          <a class="nav-link active" href="/home">ACCEUIL
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
+        {% if is_granted ('ROLE_PATIENT') %}
+        <li class="nav-item">
+          <a class="nav-link" href="/">PRESENTATION</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">EN CAS D' URGENT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">NOUS SOUTENIR</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/">ACTUALITE</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/">EQUIPEMENT</a>
+        </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="#"></a>
         </li>

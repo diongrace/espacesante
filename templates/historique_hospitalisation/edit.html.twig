@@ -7,7 +7,7 @@
 
     {{ include('historique_hospitalisation/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_historique_hospitalisation_index') }}">back to list</a>
+    <a class="btn btn-secondary mt-4" href="{{ path('app_historique_hospitalisation_index') }}">back to list</a>
 
     {{ include('historique_hospitalisation/_delete_form.html.twig') }}
 {% endblock %}

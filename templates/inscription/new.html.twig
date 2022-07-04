@@ -7,7 +7,7 @@
 
     {{ include('inscription/_form.html.twig') }}
 {% if is_granted('ROLE_ADMIN') %}
-<a href="{{ path('app_inscription_index') }}">back to list</a>
+<a class="btn btn-secondary mt-4" href="{{ path('app_inscription_index') }}">back to list</a>
 {% endif %}
 
     
