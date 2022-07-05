@@ -25,7 +25,7 @@ class UserType extends AbstractType
                 'choices'  => [
                      'ROLE_ADMIN' => 'administrateur',
                      'ROLE_USER' => 'utilisateur', 
-                       
+                     'ROLE_PATIENT' => 'patient', 
                        ],
                 'attr' => [
                     'class' => 'form-control'
