@@ -57,7 +57,9 @@ class InscriptionType extends AbstractType
                     'choisir' => 'ville',
                      'Man' => 'Man',
                      'Abidjan' => 'Abidjan', 
-                       
+                     'GUIGLO' => 'GUIGLO',
+                     'AKRA' => 'AKRA',
+                     'PARIS' => 'PARIS', 
                        ],
                 'attr' => [
                     'class' => 'form-control'
@@ -69,7 +71,9 @@ class InscriptionType extends AbstractType
                     'choisir' => 'region',
                      'Sassandra' => 'Sassandra',
                      'Lame' => 'Lame', 
-                       
+                     'métropole du Grand Paris' => 'métropole du Grand Paris',
+                     'Dakar' => 'Dakar',
+                     'Ashanti' => 'Ashanti',
                        ],
                 'attr' => [
                     'class' => 'form-control'
@@ -81,7 +85,13 @@ class InscriptionType extends AbstractType
                     'choisir' => 'region',
                      'Mali' => 'Mali',
                      'France' => 'France', 
-                     'CôteIvoire' => 'CôteIvoire', 
+                     'CôteIvoire' => 'CôteIvoire',
+                     'ghana' => 'ghana',
+                     'Nigeria' => 'Nigeria', 
+                     'RDC' => 'RDC', 
+                     'SENEGAL' => 'SENEGAL',
+                     'TANZANI' => 'TANZANI', 
+                     'CAMEROUN' => 'CAMEROUN',  
                        ],
                 'attr' => [
                     'class' => 'form-control'

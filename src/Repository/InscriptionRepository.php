@@ -47,22 +47,22 @@ class InscriptionRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Inscription[] Returns an array of Inscription objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+     * @return Inscription[] Returns an array of Inscription objects
+      */
+    
+    public function findBySexe($genre)
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('i.genre = :genre')
+            ->setParameter('genre', $genre)
             ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
+            //->setMaxResults(1)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Inscription

@@ -7,6 +7,9 @@ use App\Form\InscriptionType;
 use App\Repository\InscriptionRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\Test\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,14 +19,73 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class InscriptionController extends AbstractController
 {
+
+    private InscriptionRepository $repoInsciption;
+
+    public function __construct(
+        InscriptionRepository $repoInsciption
+    )
+    {
+        $this->repoInsciption = $repoInsciption;
+    }
+    
+    /**
+     * @Route("/recherche", name="app_inscription_search_gender", methods={"GET", "POST"})
+     * @Route("/{sexe}/recherche-resultats", name="app_inscription_search_result", methods={"GET"})
+     */
+    public function getSearch(Request $request, $sexe = null): Response
+    
+    {
+
+        $form = $this->createFormBuilder(null, [
+            'method' => 'POST',
+            'action' => $this->generateUrl('app_inscription_search_gender')
+        ]);
+
+        $form->add('sexe', ChoiceType::class, [
+            'label' => 'Choisir le champs de la recherche',
+            'choices' => [
+                'choix' => 'choix',
+                'Femme' => 'femme',
+                'Homme' => 'homme',
+            ]
+        ]);
+
+        $form = $form->getForm();
+
+        $form->handleRequest($request);
+
+    
+        if ($sexe) {
+            $inscriptions = $this->repoInsciption->findBySexe($sexe);
+        }else {
+            $inscriptions = $this->repoInsciption->findAll();
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+           $data = $form->getData();
+    
+           return $this->redirectToRoute('app_inscription_search_result', [
+            'sexe' => $data['sexe']
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('inscription/recherche.html.twig', [
+            'form' => $form->createView(),
+            'inscriptions' => $inscriptions
+        ]);
+    }
+
     /**
     
      * @Route("/", name="app_inscription_index", methods={"GET"})
      */
     public function index(InscriptionRepository $inscriptionRepository): Response
+    
     {
+        $inscriptions = $this->repoInsciption->findAll();
         return $this->render('inscription/index.html.twig', [
-            'inscriptions' => $inscriptionRepository->findAll(),
+            'inscriptions' => $inscriptions,
         ]);
     }
 

@@ -38,8 +38,8 @@
                 <td>{{ inscription.dateNaissance ? inscription.dateNaissance|date('Y-m-d') : '' }}</td>
                 <td>{{ inscription.numeroCNI }}</td>
                 <td>
-                    <a class="btn btn-info mt-b" href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
-                    <a class="btn btn-primary mt-b" href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
+                    <a class="btn  btn-info mt-b" href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
+                    <a class="btn  btn-primary mt-4" href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
