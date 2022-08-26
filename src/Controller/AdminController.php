@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\EditUserType;
 use App\Repository\UserRepository;
+use App\Repository\InscriptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,5 +53,34 @@ class AdminController extends AbstractController
             'userForm' => $form->createView()
         ]);
 
+    }
+    /**
+     * @Route("/statistique", name="statistique")
+     */
+    public function statistiques(InscriptionRepository $repoInsciption){
+        //on va chercher toutes les utilisateurs
+        $inscriptions = $repoInsciption->findAll();
+        $value = [
+            'homme' => 0,
+            'femme' => 0,
+        ];
+        $femme = 0;
+        $homme = 0;
+        foreach ($inscriptions as $inscription) {
+             $sexe = $inscription->getGenre();
+             if ($sexe === 'femme') 
+             {
+                $femme = $femme + 1;
+                 $value["femme"] = $femme; 
+             }else {
+                $homme = $homme + 1;
+                $value["homme"] = $homme;
+             }
+        }
+
+        // $value = json_encode($value);
+        return $this->render('admin/statistique.html.twig', [
+            'value' => $value,
+        ]);
     }
 }

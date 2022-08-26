@@ -20,6 +20,7 @@
                 <th>Pays</th>
                 <th>DateNaissance</th>
                 <th>NumeroCNI</th>
+                <th>color</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                 <td>{{ inscription.pays }}</td>
                 <td>{{ inscription.dateNaissance ? inscription.dateNaissance|date('Y-m-d') : '' }}</td>
                 <td>{{ inscription.numeroCNI }}</td>
+                <td>{{ inscription.color }}</td>
                 <td>
                     <a class="btn  btn-info mt-b" href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
                     <a class="btn  btn-primary mt-4" href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
@@ -44,7 +46,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="12">no records found</td>
+                <td colspan="13">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -62,17 +62,42 @@ class InscriptionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+     public function findBypersonne($genre, $ville )
+     {
+         return $this->createQueryBuilder('i')
+            ->andWhere('i.genre = :genre and i.ville = :ville ')
+            ->setParameters(['genre'=>$genre,'ville'=>$ville ])
+            ->orderBy('i.id', 'ASC')
+           //->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+         ;
+     }
+
+     public function findByville($ville )
+     {
+         return $this->createQueryBuilder('i')
+            ->andWhere('i.ville = :ville ')
+            ->setParameters('ville',$ville)
+            ->orderBy('i.id', 'ASC')
+           //->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+         ;
+     }
+    
     
 
-    /*
-    public function findOneBySomeField($value): ?Inscription
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
+    // public function findOneBySomeField($value): ?Inscription
+    // {
+    //     return $this->createQueryBuilder('i')
+    //         ->andWhere('i.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->getQuery()
+    //         ->getOneOrNullResult()
+    //     ;
+    // }
+
 }

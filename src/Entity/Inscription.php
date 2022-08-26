@@ -67,6 +67,11 @@ class Inscription
      */
     private $numeroCNI;
 
+    /**
+     * @ORM\Column(type="string", length=7, nullable=true)
+     */
+    private $color;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +193,18 @@ class Inscription
     public function setNumeroCNI(string $numeroCNI): self
     {
         $this->numeroCNI = $numeroCNI;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }
