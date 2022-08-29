@@ -63,17 +63,17 @@ class InscriptionRepository extends ServiceEntityRepository
         ;
     }
 
-     public function findBypersonne($genre, $ville )
-     {
-         return $this->createQueryBuilder('i')
-            ->andWhere('i.genre = :genre and i.ville = :ville ')
-            ->setParameters(['genre'=>$genre,'ville'=>$ville ])
-            ->orderBy('i.id', 'ASC')
-           //->setMaxResults(1)
-            ->getQuery()
-            ->getResult()
-         ;
-     }
+    //  public function findBypersonne($genre, $ville )
+    //  {
+    //      return $this->createQueryBuilder('i')
+    //         ->andWhere('i.genre = :genre and i.ville = :ville ')
+    //         ->setParameters(['genre'=>$genre,'ville'=>$ville ])
+    //         ->orderBy('i.id', 'ASC')
+    //        //->setMaxResults(1)
+    //         ->getQuery()
+    //         ->getResult()
+    //      ;
+    //  }
 
      public function findByville($ville )
      {

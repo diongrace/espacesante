@@ -72,66 +72,9 @@ class InscriptionController extends AbstractController
             'inscriptions' => $inscriptions
         ]);
     }
-    
-    //    /**
-    //     * @Route("/resultat", name="app_inscription_recherche", methods={"GET", "POST"})
-    //     * @Route("/{genre, ville}/recherche-resultats", name="app_inscription_recherche_result", methods={"GET"})
-    //    */
-    //    public function getrecherche(Request $request, $genre = null, $ville = null): Response
-
-    //    {
-    //        // $form = $this->createForm(InscriptionType::class, $genre, $ville);
-    //       $form = $this->createFormBuilder(null, [
-    //           'method' => 'POST',
-    //           'action' => $this->generateUrl('app_inscription_recherche' )
-    //       ]);
-    //         $form->add('ville', ChoiceType::class, [
-    //           'label' => 'Choisir le champs de la recherche',
-    //         'choices' => [
-    //            'choix' => 'choix',
-    //              'Daloa' => 'Daloa',
-    //              'Divo' => 'Divo',
-    //             'Abidjan' => 'Abidjan',
-    //        ]
-    //    ])
-    //         ->add('genre', ChoiceType::class, [
-    //           'label' => 'Choisir le champs de la recherche',
-    //          'choices' => [
-    //              'choix' => 'choix',
-    //              'homme' => 'homme',
-    //             'femme' => 'femme',
-             
-    //         ]
-    //       ])
-    //   ;
-
-    //        $form = $form->getForm();
-
-    //        $form->handleRequest($request);
 
     
-    //        if ($ville) {
-    //            $inscriptions = $this->repoInsciption->findBypersonne($ville );
-    //        }else {
-    //            $inscriptions = $this->repoInsciption->findAll();
-    //        }
 
-    //        if ($form->isSubmitted() && $form->isValid()) {
-    //           $data = $form->getData();
-    
-    //           return $this->redirectToRoute('app_inscription_recherche_result', [
-    //           'ville', 'genre' => $data['ville'], $data['genre']
-    //            ], Response::HTTP_SEE_OTHER);
-    //        }
-    //        return $this->render('inscription/recherche.html.twig', [
-    //            'form' => $form->createView(),
-    //            'inscriptions' => $inscriptions,
-    //        ]);
-    //    }
-
-     /** @Route("/recherches", name="app_inscription_search_ville", methods={"GET", "POST"})
-       * @Route("/{ville}/rendu-resultat", name="app_inscription_search_resultat", methods={"GET"})
-      */
       public function findByville(Request $request, $ville = null): Response
 
      {
@@ -150,7 +93,7 @@ class InscriptionController extends AbstractController
              ]
         ])
          ;
-
+        
          $form = $form->getForm();
 
          $form->handleRequest($request);

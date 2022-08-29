@@ -13,11 +13,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
+    private InscriptionRepository $repoInscription;
+
+    public function __construct(
+        InscriptionRepository $repoInscription
+    ){
+        $this->repoInscription = $repoInscription;
+    }
+
     /**
      * @Route("/admin", name="app_admin")
      */
     public function index(): Response
     {
+
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
         ]);
@@ -52,14 +61,13 @@ class AdminController extends AbstractController
         return $this->render('admin/edituser.html.twig', [
             'userForm' => $form->createView()
         ]);
-
     }
     /**
      * @Route("/statistique", name="statistique")
      */
-    public function statistiques(InscriptionRepository $repoInsciption){
+    public function statistiques(){
         //on va chercher toutes les utilisateurs
-        $inscriptions = $repoInsciption->findAll();
+        $inscriptions = $this->repoInscription->findAll();
         $value = [
             'homme' => 0,
             'femme' => 0,
@@ -83,4 +91,6 @@ class AdminController extends AbstractController
             'value' => $value,
         ]);
     }
+    
 }
+

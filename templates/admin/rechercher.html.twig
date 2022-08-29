@@ -1,0 +1,61 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des patients{% endblock %}
+
+{% block body %}
+    
+ {% if is_granted('ROLE_ADMIN') %}
+ <h1>liste des utilisateurs</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Profession</th>
+                <th>Telephone</th>
+                <th>Genre</th>
+                <th>Ville</th>
+                <th>Region</th>
+                <th>Pays</th>
+                <th>DateNaissance</th>
+                <th>NumeroCNI</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inscription in inscriptions %}
+            <tr>
+                <td>{{ inscription.id }}</td>
+                <td>{{ inscription.nom }}</td>
+                <td>{{ inscription.prenom }}</td>
+                <td>{{ inscription.profession }}</td>
+                <td>{{ inscription.telephone }}</td>
+                <td>{{ inscription.genre }}</td>
+                <td>{{ inscription.ville }}</td>
+                <td>{{ inscription.region }}</td>
+                <td>{{ inscription.pays }}</td>
+                <td>{{ inscription.dateNaissance ? inscription.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ inscription.numeroCNI }}</td>
+                <td>
+                    <a class="btn  btn-info mt-b" href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
+                    <a class="btn  btn-primary mt-4" href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary mt-b" href="{{ path('app_inscription_new') }}">Create new</a>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-lg btn-primary mt-4">{{ button_label|default('rechercher') }}</button>
+    {{ form_end(form) }}    
+{% endif %}
+
+{% endblock %}
+      
